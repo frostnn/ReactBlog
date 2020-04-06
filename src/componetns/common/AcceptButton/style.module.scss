@@ -1,0 +1,26 @@
+.wrapper {
+  width: 80%;
+  height: 35px;
+  border-radius: 20px;
+  border: 1px solid #1161ee;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 45px;
+  cursor: pointer;
+}
+.wrapper:hover {
+color: #255784;
+background-color: #2196f3;
+box-shadow: 0 0 10px #2196f3;
+  }
+
+.wrapper.fuchsia {
+  background: fuchsia;
+}
+.input.darkcyan {
+  background: darkcyan;
+}
