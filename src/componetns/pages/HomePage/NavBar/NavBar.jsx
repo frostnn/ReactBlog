@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import styles from './style.module.scss'
 import NavButton from './NavButton/NavButton';
+import {connect} from 'react-redux';
+import globalAction from '../../../../actions/globalAction';
 
-export default class NavBar extends Component {
-
+ class NavBar extends Component {
   constructor(props){
     super(props);
     this.state = {
-      activeButtonId: 1,
       buttons: [
         {
           label: 'Главная',
@@ -30,26 +30,32 @@ export default class NavBar extends Component {
   }
 
   pickButton = (id) => {
-    this.setState({activeButtonId: id})
+    this.props.updateActiveButtonIdAction(id)
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextState.activeButtonId !== this.state.activeButtonId || false
-  }
+ 
   render () {
-    console.log(this.state)
+   console.log(this.props)
     return (
       <div className={styles.wrapper}>
       {
         this.state.buttons.map((button, key) => {
           return <NavButton label={button.label} 
           key={button.id}
-          active={this.state.activeButtonId === button.id}
-          cb={()=>{this.pickButton(button.id)}}
+          active={this.props.activeButtonId === button.id}
+          cb={()=>{this.props.updateActiveButtonIdAction(button.id)}}
           />
         })
       }
       </div>
            )
   }
-
 }
+
+const mapStateToProps = (store) => ({activeButtonId: store.activeButtonId});
+const mapActionToProps = (dispatch) => ({
+  updateActiveButtonIdAction: (id)=>{
+    dispatch(globalAction.updateActiveButtonIdAction(id))
+    }
+  })
+
+export default connect(mapStateToProps, mapActionToProps)(NavBar);

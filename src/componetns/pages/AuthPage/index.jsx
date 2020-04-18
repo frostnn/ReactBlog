@@ -8,7 +8,7 @@ export default class AuthPage extends Component {
   render () {
     return (
         <Page addStyle={styles.wrapper}>
-          <AuthForm setLoggedUser={this.props.setLoggedUser}/>
+          <AuthForm/>
         </Page>
         
            )

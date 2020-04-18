@@ -4,9 +4,10 @@ import TextInput from '../../../common/TextInput/';
 import PasswordInput from '../../../common/PasswordInput/';
 import AcceptButton from '../../../common/AcceptButton/';
 import Server from '../../../../mocServer/';
-
-
-export default class AuthForm extends Component {
+import {connect} from 'react-redux';
+import mapStateToProps from '../../../../reducers/mapStateToProps';
+import mapActionToProps from '../../../../reducers/mapActionToProps';
+class AuthForm extends Component {
 
   state = {
     login: '',
@@ -21,10 +22,12 @@ export default class AuthForm extends Component {
 
   tryAuth = () => {
     try {
-    const user =  Server.authorization({login: this.state.login, password: this.state.password})
-      this.props.setLoggedUser(user);
-      console.log('------>Logged!')
-  } catch (error) {
+      const user =  Server.authorization({
+        login: this.state.login, 
+        password: this.state.password
+      });
+      this.props.setUserAction(user);
+    } catch (error) {
       alert('Not login and password')
     }
   };
@@ -42,3 +45,6 @@ export default class AuthForm extends Component {
   }
 
 }
+
+
+export default connect(mapStateToProps, mapActionToProps)(AuthForm)

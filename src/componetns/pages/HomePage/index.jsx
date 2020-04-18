@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import Page from '../../../componetns/common/Page/index'
-
 import TopBar from './TopBar/TopBar'
 import NavBar from './NavBar/NavBar';
-//
+import PostSection from './sections/PostSection/PostSection'
 
 
 export default class HomePage extends Component {
@@ -11,9 +10,11 @@ export default class HomePage extends Component {
     return (
         <Page>
         
-          <TopBar name={this.props.user.name} unsetLoggedUser={this.props.unsetLoggedUser}/>
-          <NavBar/>
-        
+          <TopBar/>
+          <div style={{height: '100%', display: 'flex'}}>
+            <NavBar/>
+            <PostSection/>
+          </div>
         </Page>
         
            )

@@ -1,0 +1,23 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  height: 150px;
+  padding: 20px;
+  background: rgba(39, 31, 34, 0.7);
+  header {
+    font-size: 18px;
+    
+  }
+  main {
+    font-size: 14px;
+    padding-bottom: 30px;
+  }
+ 
+}
+.opened {
+  height: auto;
+}
