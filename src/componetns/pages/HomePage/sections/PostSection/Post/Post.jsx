@@ -9,21 +9,11 @@ state = {
 toggleHeightPost = () => {
   this.setState({isOpened: !this.state.isOpened})
 }
-
-shouldComponentUpdate(nextProps, nextState, nextContent) {
-  return true
-}
-
-static getDerivedStateFromProps(nextProps, prevState){
-  return {
-    isOpened: nextProps.unfolding
-  }
-}
   render() {
     return ( 
       <article className={concatClasses(styles.wrapper, 
-        this.state.isOpened && styles.opened
-        )}
+       (this.props.unfolding || this.state.isOpened) && styles.opened
+      )}
         onClick={this.toggleHeightPost}
         >
         <header>{this.props.self.header}</header>

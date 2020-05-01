@@ -6,14 +6,14 @@ import mapActionToProps from '../../../../reducers/mapActionToProps';
  class TopBar extends Component {
 
   render () {
-    console.log(this.props)
+    const {user, unsetUserAction} = this.props;
     return (
      <header className={styles.wrapper}>
-      <div>{this.props.user.name}</div>
-      <div onClick={this.props.unsetUserAction} className={styles.exit}>Выход</div>
+      <div>{user.name}</div>
+      <div onClick={unsetUserAction} className={styles.exit}>Выход</div>
      </header>
     )
   }
 }
 
-export default connect(mapStateToProps, mapActionToProps)(TopBar)
+export default connect(mapStateToProps.global, mapActionToProps)(TopBar)

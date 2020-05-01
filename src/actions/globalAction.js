@@ -1,19 +1,23 @@
 import preStorageProcessing from '../utils/preStorageProcessing'
+import ActionTypes from './ActionTypes'
 export default {
-  updateActiveButtonIdAction(activeButtonId) {
-    return {
-      type: 'updateActiveButtonIdAction',
-      payload: activeButtonId,
-    };
-  },
-  setUserAction(user){
+  [ActionTypes.setUserAction](user){
     localStorage.setItem('user', preStorageProcessing.toString(user));
-    return {type: 'setUserAction', payload: user}
+    return {
+      type: ActionTypes.setUserAction,
+      payload: user 
+    } 
   },
 
-  unsetUserAction(){
+  [ActionTypes.unsetUserAction](){
     localStorage.removeItem('user');
-    return {type: 'unsetUserAction'}
+    return { type: ActionTypes.unsetUserAction }
+  },
+  [ActionTypes.writePosts](posts) {
+    return { 
+      type: ActionTypes.writePosts,
+      payload: posts 
+    }
   }
 };
 

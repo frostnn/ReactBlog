@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import styles from './style.module.scss'
 import NavButton from './NavButton/NavButton';
 import {connect} from 'react-redux';
-import globalAction from '../../../../actions/globalAction';
-
+import mapStateToProps from '../../../../reducers/mapStateToProps';
+import mapActionToProps from '../../../../reducers/mapActionToProps';
  class NavBar extends Component {
   constructor(props){
     super(props);
@@ -38,7 +38,7 @@ import globalAction from '../../../../actions/globalAction';
     return (
       <div className={styles.wrapper}>
       {
-        this.state.buttons.map((button, key) => {
+        this.state.buttons.map((button, index) => {
           return <NavButton label={button.label} 
           key={button.id}
           active={this.props.activeButtonId === button.id}
@@ -51,11 +51,11 @@ import globalAction from '../../../../actions/globalAction';
   }
 }
 
-const mapStateToProps = (store) => ({activeButtonId: store.activeButtonId});
-const mapActionToProps = (dispatch) => ({
-  updateActiveButtonIdAction: (id)=>{
-    dispatch(globalAction.updateActiveButtonIdAction(id))
-    }
-  })
 
-export default connect(mapStateToProps, mapActionToProps)(NavBar);
+
+export default connect((store)=>({
+  ...store.global, 
+  ...store.navigate
+}), 
+mapActionToProps)
+(NavBar);

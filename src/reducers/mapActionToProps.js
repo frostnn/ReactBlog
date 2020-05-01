@@ -1,15 +1,18 @@
-import globalAction from '../actions/globalAction'
+import actions from '../actions/actions'
 
 export default (dispatch) => ({
   setUserAction: (user)=>{
-    dispatch(globalAction.setUserAction(user))
+    dispatch(actions.setUserAction(user))
     },
 
-  unsetUserAction: (user)=>{
-    dispatch(globalAction.unsetUserAction(user))
+  unsetUserAction: ()=>{
+    dispatch(actions.unsetUserAction())
     },
 
     updateActiveButtonIdAction: (id)=>{
-    dispatch(globalAction.updateActiveButtonIdAction(id))
+    dispatch(actions.updateActiveButtonIdAction(id))
     },   
+    writePosts: posts => {
+      dispatch(actions.writePosts(posts));
+    }
   })

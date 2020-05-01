@@ -47,4 +47,4 @@ class AuthForm extends Component {
 }
 
 
-export default connect(mapStateToProps, mapActionToProps)(AuthForm)
+export default connect(()=>null, mapActionToProps)(AuthForm)

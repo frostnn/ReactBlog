@@ -1,16 +1,24 @@
 import React from 'react';
 import './styles/global.scss';
-import AuthPage from './componetns/pages/AuthPage/index';
-import HomePage from './componetns/pages/HomePage/index';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import {globalReducer, initState} from './reducers/globalReducer'
 import initApp from './initApp';
+import Router from './componetns/router/Router';
+import rootREducers from './reducers/rootREducer';
+import logger from 'redux-logger';
 
+const customMiddleware = store => next => action => {
+ console.log('Action ttype is ${action.type }')
+  return next(action)
+};
 
-export const store = createStore(globalReducer, initState);
+export const store = createStore(
+  rootREducers, 
+  undefined,
+  applyMiddleware(customMiddleware)
+  );
 
-class App extends React.Component {
+class App extends React.Component { 
   constructor(props){
     super(props);
     initApp(store);
@@ -19,12 +27,7 @@ class App extends React.Component {
   render() { 
     return (
       <Provider store={store}>
-        <div className="App">
-        {
-          (store.getState().user && <HomePage />) || (  
-          <AuthPage/>)
-        }
-        </div>
+        <Router/>
       </Provider>
     );
   }
