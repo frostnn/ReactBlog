@@ -5,10 +5,8 @@ import {Provider} from 'react-redux';
 import initApp from './initApp';
 import Router from './componetns/router/Router';
 import rootREducers from './reducers/rootREducer';
-import logger from 'redux-logger';
 
 const customMiddleware = store => next => action => {
- console.log('Action ttype is ${action.type }')
   return next(action)
 };
 

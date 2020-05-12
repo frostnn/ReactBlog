@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styles from './style.module.scss'
 import NavButton from './NavButton/NavButton';
 import {connect} from 'react-redux';
-import mapStateToProps from '../../../../reducers/mapStateToProps';
 import mapActionToProps from '../../../../reducers/mapActionToProps';
  class NavBar extends Component {
   constructor(props){
@@ -34,7 +33,6 @@ import mapActionToProps from '../../../../reducers/mapActionToProps';
   }
  
   render () {
-   console.log(this.props)
     return (
       <div className={styles.wrapper}>
       {

@@ -5,7 +5,6 @@ import PasswordInput from '../../../common/PasswordInput/';
 import AcceptButton from '../../../common/AcceptButton/';
 import Server from '../../../../mocServer/';
 import {connect} from 'react-redux';
-import mapStateToProps from '../../../../reducers/mapStateToProps';
 import mapActionToProps from '../../../../reducers/mapActionToProps';
 class AuthForm extends Component {
 
@@ -33,7 +32,6 @@ class AuthForm extends Component {
   };
 
   render () {
-    console.log(this.state)
     return (
           <div className={styles.wrapper}>
             <span className={styles.authTitle}>Авторизация</span>
