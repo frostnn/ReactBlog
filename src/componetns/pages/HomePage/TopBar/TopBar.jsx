@@ -3,6 +3,7 @@ import styles from './TopBar.module.scss';
 import {connect} from 'react-redux';
 import mapStateToProps from '../../../../reducers/mapStateToProps';
 import mapActionToProps from '../../../../reducers/mapActionToProps';
+import {Link} from 'react-router-dom'
  class TopBar extends Component {
 
   render () {
@@ -10,7 +11,10 @@ import mapActionToProps from '../../../../reducers/mapActionToProps';
     return (
      <header className={styles.wrapper}>
       <div>{user.name}</div>
-      <div onClick={unsetUserAction} className={styles.exit}>Выход</div>
+      <Link to='/'>
+        <div onClick={unsetUserAction} className={styles.exit}>Выход</div>
+      </Link>
+      
      </header>
     )
   }

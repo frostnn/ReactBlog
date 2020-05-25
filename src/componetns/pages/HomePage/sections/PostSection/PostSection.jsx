@@ -63,7 +63,7 @@ class PostSection extends React.Component {
        <div style={{position: "fixed", bottom: 30, right: 30}}>
         <RoundButton func={this.createPost}/>
        </div>
-       <Editor/>
+       
       </section>
     )
   }
